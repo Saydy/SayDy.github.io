@@ -238,8 +238,12 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <Excerpt in index | 首页摘要>
-          
+        <!-- 全文 -->
+<h3 id="1-_u521B_u5EFA_u4E00_u4E2A_u7EE7_u627F_u81EAUIView_u7684_u7C7B"><a href="#1-_u521B_u5EFA_u4E00_u4E2A_u7EE7_u627F_u81EAUIView_u7684_u7C7B" class="headerlink" title="1.创建一个继承自UIView的类"></a>1.创建一个继承自UIView的类</h3><p><strong>LeftSliderView.h</strong><br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">&lt;UIKit/UIKit.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">LeftSliderView</span> : <span class="title">UIView</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>LeftSliderView.m</strong><br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">"LeftSliderView.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">LeftSliderView</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2-_u81EA_u5B9A_u4E49init_u65B9_u6CD5"><a href="#2-_u81EA_u5B9A_u4E49init_u65B9_u6CD5" class="headerlink" title="2.自定义init方法"></a>2.自定义init方法</h3><p>在<strong>LeftSliderView.m</strong>中重写<strong>initWithFrame</strong>方法</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- (instancetype)initWithFrame:(<span class="built_in">CGRect</span>)frame</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> initWithFrame:frame];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 创建一个占满屏幕的按钮,添加一个点击事件,并添加到这个自定义控件中</span></span><br><span class="line">    <span class="built_in">UIButton</span> *backAcitonButton = [[<span class="built_in">UIButton</span> alloc] initWithFrame:<span class="keyword">self</span><span class="variable">.bounds</span>];</span><br><span class="line">    [backAcitonButton addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(dismiss) forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</span><br><span class="line">    [<span class="keyword">self</span> addSubview:backAcitonButton];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -248,10 +252,6 @@
       
 
       
-      
-        <p class="article-more-link">
-          <a  href="/2016/02/15/自定义一个侧滑菜单/#more">more >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>
