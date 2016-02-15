@@ -31,7 +31,7 @@ LeftSliderView.m
 @implementation LeftSliderView
 
 @end">
-<meta property="og:updated_time" content="2016-02-15T14:52:48.000Z">
+<meta property="og:updated_time" content="2016-02-15T14:59:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义一个侧滑菜单">
 <meta name="twitter:description" content="###1.创建一个继承自UIView的类 
@@ -294,7 +294,8 @@ LeftSliderView.m
 
     return self;
 }
-</code></pre>
+</code></pre><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- (instancetype)initWithFrame:(<span class="built_in">CGRect</span>)frame</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> initWithFrame:frame];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 创建一个占满屏幕的按钮,添加一个点击事件,并添加到这个自定义控件中</span></span><br><span class="line">    <span class="built_in">UIButton</span> *backAcitonButton = [[<span class="built_in">UIButton</span> alloc] initWithFrame:<span class="keyword">self</span><span class="variable">.bounds</span>];</span><br><span class="line">    [backAcitonButton addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(dismiss) forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</span><br><span class="line">    [<span class="keyword">self</span> addSubview:backAcitonButton];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -305,7 +306,7 @@ LeftSliderView.m
         <p><span>本文标题:</span><a href="/2016/02/15/自定义一个侧滑菜单/">自定义一个侧滑菜单</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 SayDy 的个人博客">SayDy</a></p>
         <p><span>发布时间:</span>2016年02月15日 - 22时19分</p>
-        <p><span>最后更新:</span>2016年02月15日 - 22时52分</p>
+        <p><span>最后更新:</span>2016年02月15日 - 22时59分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/02/15/自定义一个侧滑菜单/" title="自定义一个侧滑菜单">http://saydy.top/2016/02/15/自定义一个侧滑菜单/</a>
             <span class="copy-path" data-clipboard-text="原文: http://saydy.top/2016/02/15/自定义一个侧滑菜单/　　作者: SayDy" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
