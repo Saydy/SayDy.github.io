@@ -211,6 +211,81 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-自定义一个侧滑菜单" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/15/自定义一个侧滑菜单/" class="article-date">
+      <time datetime="2016-02-15T14:19:35.000Z" itemprop="datePublished">2016-02-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/15/自定义一个侧滑菜单/">自定义一个侧滑菜单</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>###1.创建一个继承自UIView的类 </p>
+<p><strong>LeftSliderView.h</strong></p>
+<pre><code>#import &lt;UIKit/UIKit.h&gt;
+@interface LeftSliderView : UIView
+
+@end
+</code></pre><p><strong>LeftSliderView.m</strong></p>
+<pre><code>#import &quot;LeftSliderView.h&quot;
+@implementation LeftSliderView
+
+@end
+</code></pre><p>###2.自定义init方法<br>在<strong>LeftSliderView.m</strong>中重写<strong>initWithFrame</strong>方法</p>
+<pre><code>- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+
+    // 创建一个占满屏幕的按钮,添加一个点击事件,并添加到这个自定义控件中
+    UIButton *backAcitonButton = [[UIButton alloc] initWithFrame:self.bounds];
+    [backAcitonButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:backAcitonButton];
+
+    return self;
+}
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-你好-世界" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
