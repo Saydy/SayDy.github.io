@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://saydy.top/2016/02/15/自定义一个侧滑菜单/index.html">
 <meta property="og:site_name" content="SayDy's Blog">
 <meta property="og:description">
-<meta property="og:updated_time" content="2016-02-15T15:09:54.000Z">
+<meta property="og:updated_time" content="2016-02-15T15:11:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义一个侧滑菜单">
 <meta name="twitter:description">
@@ -241,18 +241,16 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p>
-<ul>
-<li><a id="more"></a>
+        <excerpt in="" index="" |="" 首页摘要=""> 
+
+<a id="more"></a>
 <the rest="" of="" contents="" |="" 余下全文="">
 
-</the></li>
-</ul>
 <h3 id="1-_u521B_u5EFA_u4E00_u4E2A_u7EE7_u627F_u81EAUIView_u7684_u7C7B"><a href="#1-_u521B_u5EFA_u4E00_u4E2A_u7EE7_u627F_u81EAUIView_u7684_u7C7B" class="headerlink" title="1.创建一个继承自UIView的类"></a>1.创建一个继承自UIView的类</h3><p><strong>LeftSliderView.h</strong><br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">&lt;UIKit/UIKit.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">LeftSliderView</span> : <span class="title">UIView</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
 <p><strong>LeftSliderView.m</strong><br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">"LeftSliderView.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">LeftSliderView</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="2-_u81EA_u5B9A_u4E49init_u65B9_u6CD5"><a href="#2-_u81EA_u5B9A_u4E49init_u65B9_u6CD5" class="headerlink" title="2.自定义init方法"></a>2.自定义init方法</h3><p>在<strong>LeftSliderView.m</strong>中重写<strong>initWithFrame</strong>方法</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- (instancetype)initWithFrame:(<span class="built_in">CGRect</span>)frame</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> initWithFrame:frame];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 创建一个占满屏幕的按钮,添加一个点击事件,并添加到这个自定义控件中</span></span><br><span class="line">    <span class="built_in">UIButton</span> *backAcitonButton = [[<span class="built_in">UIButton</span> alloc] initWithFrame:<span class="keyword">self</span><span class="variable">.bounds</span>];</span><br><span class="line">    [backAcitonButton addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(dismiss) forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</span><br><span class="line">    [<span class="keyword">self</span> addSubview:backAcitonButton];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+</the></excerpt>
       
     </div>
     
@@ -263,7 +261,7 @@
         <p><span>本文标题:</span><a href="/2016/02/15/自定义一个侧滑菜单/">自定义一个侧滑菜单</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 SayDy 的个人博客">SayDy</a></p>
         <p><span>发布时间:</span>2016年02月15日 - 22时19分</p>
-        <p><span>最后更新:</span>2016年02月15日 - 23时09分</p>
+        <p><span>最后更新:</span>2016年02月15日 - 23时11分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/02/15/自定义一个侧滑菜单/" title="自定义一个侧滑菜单">http://saydy.top/2016/02/15/自定义一个侧滑菜单/</a>
             <span class="copy-path" data-clipboard-text="原文: http://saydy.top/2016/02/15/自定义一个侧滑菜单/　　作者: SayDy" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
