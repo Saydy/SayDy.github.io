@@ -5,16 +5,16 @@
   
   <title>使用运行时(Runtime)字典转换模型 | SayDy&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="当我们创建">
+  <meta name="description" content="使用RunTime去实现类似setValuesForKeysWithDictionary赋值模型效果">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用运行时(Runtime)字典转换模型">
 <meta property="og:url" content="http://saydy.top/2016/02/29/使用运行时-Runtime-字典转换模型/index.html">
 <meta property="og:site_name" content="SayDy's Blog">
-<meta property="og:description" content="当我们创建">
-<meta property="og:updated_time" content="2016-02-29T15:37:40.000Z">
+<meta property="og:description" content="使用RunTime去实现类似setValuesForKeysWithDictionary赋值模型效果">
+<meta property="og:updated_time" content="2016-03-02T13:03:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用运行时(Runtime)字典转换模型">
-<meta name="twitter:description" content="当我们创建">
+<meta name="twitter:description" content="使用RunTime去实现类似setValuesForKeysWithDictionary赋值模型效果">
   
     <link rel="alternative" href="/atom.xml" title="SayDy&#39;s Blog" type="application/atom+xml">
   
@@ -241,8 +241,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>当我们创建</p>
-
+        <p>使用RunTime去实现类似<strong>setValuesForKeysWithDictionary</strong>赋值模型效果<br><a id="more"></a></p>
+<h3 id="u7B80_u5355_u5B9E_u73B0"><a href="#u7B80_u5355_u5B9E_u73B0" class="headerlink" title="简单实现"></a>简单实现</h3><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    <span class="comment">// 字典</span></span><br><span class="line">    <span class="built_in">NSDictionary</span> *dict = @&#123;<span class="string">@"name"</span> : <span class="string">@"xy"</span> ,</span><br><span class="line">                           <span class="string">@"age"</span> : @<span class="number">1</span>,</span><br><span class="line">                           <span class="string">@"cid"</span> : @<span class="number">12345</span>&#125;;</span><br><span class="line">    <span class="comment">// 创建一个模型的实例</span></span><br><span class="line">    Person *per = [[Person alloc] init];</span><br><span class="line">    <span class="comment">// 无符号整形</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> count;</span><br><span class="line">    <span class="comment">// 取类的所有属性和变量,count:数量</span></span><br><span class="line">    Ivar *ivars = class_copyIvarList([Person class], &amp;count);</span><br><span class="line">    <span class="comment">// 遍历</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i ++) &#123;</span><br><span class="line">        <span class="comment">// 取出一个属性</span></span><br><span class="line">        Ivar p = ivars[i];</span><br><span class="line">        <span class="comment">// 获取这个属性的变量字,带_变量名</span></span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">char</span> *nameChars = ivar_getName(p);</span><br><span class="line">        <span class="comment">// 转换为NSString类型</span></span><br><span class="line">        <span class="built_in">NSString</span> *name = [<span class="built_in">NSString</span> stringWithUTF8String:nameChars];</span><br><span class="line">        <span class="comment">// 去处下划线</span></span><br><span class="line">        name = [name substringFromIndex:<span class="number">1</span>];</span><br><span class="line">        <span class="comment">// 输出变量名字</span></span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,name);</span><br><span class="line">        <span class="comment">// 对象每一个属性取字典对应属性进行赋值</span></span><br><span class="line">        [per setValue:dict[name] forKey:name];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 打印查看是否正确</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@ %zd %zd"</span> ,per<span class="variable">.name</span> ,per<span class="variable">.age</span> ,per<span class="variable">.cid</span>);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -253,7 +253,7 @@
         <p><span>本文标题:</span><a href="/2016/02/29/使用运行时-Runtime-字典转换模型/">使用运行时(Runtime)字典转换模型</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 SayDy 的个人博客">SayDy</a></p>
         <p><span>发布时间:</span>2016年02月29日 - 23时27分</p>
-        <p><span>最后更新:</span>2016年02月29日 - 23时37分</p>
+        <p><span>最后更新:</span>2016年03月02日 - 21时03分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/02/29/使用运行时-Runtime-字典转换模型/" title="使用运行时(Runtime)字典转换模型">http://saydy.top/2016/02/29/使用运行时-Runtime-字典转换模型/</a>
             <span class="copy-path" data-clipboard-text="原文: http://saydy.top/2016/02/29/使用运行时-Runtime-字典转换模型/　　作者: SayDy" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -289,7 +289,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u7B80_u5355_u5B9E_u73B0"><span class="toc-number">1.</span> <span class="toc-text">简单实现</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
