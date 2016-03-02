@@ -5,16 +5,16 @@
   
   <title>响应者链条调用navigation | SayDy&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="响应者链条有很多妙用.比如自定义一个控件时.需要执行navigation的popViewControllerAnimated方法.因为不是控制器,所以无法使用self.navigationController.这时候可以采用响应者链条,去遍历响应者取出navigation">
+  <meta name="description" content="响应者链条有很多妙用.比如自定义一个控件时.需要执行navigation的popViewControllerAnimated方法.因为不是控制器,所以无法使用self.navigationController.这时候便可以采用响应者链条,去遍历响应者取出navigation对象">
 <meta property="og:type" content="article">
 <meta property="og:title" content="响应者链条调用navigation">
 <meta property="og:url" content="http://saydy.top/2016/03/02/响应者链条调用navigation/index.html">
 <meta property="og:site_name" content="SayDy's Blog">
-<meta property="og:description" content="响应者链条有很多妙用.比如自定义一个控件时.需要执行navigation的popViewControllerAnimated方法.因为不是控制器,所以无法使用self.navigationController.这时候可以采用响应者链条,去遍历响应者取出navigation">
-<meta property="og:updated_time" content="2016-03-02T14:14:38.000Z">
+<meta property="og:description" content="响应者链条有很多妙用.比如自定义一个控件时.需要执行navigation的popViewControllerAnimated方法.因为不是控制器,所以无法使用self.navigationController.这时候便可以采用响应者链条,去遍历响应者取出navigation对象">
+<meta property="og:updated_time" content="2016-03-02T14:17:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="响应者链条调用navigation">
-<meta name="twitter:description" content="响应者链条有很多妙用.比如自定义一个控件时.需要执行navigation的popViewControllerAnimated方法.因为不是控制器,所以无法使用self.navigationController.这时候可以采用响应者链条,去遍历响应者取出navigation">
+<meta name="twitter:description" content="响应者链条有很多妙用.比如自定义一个控件时.需要执行navigation的popViewControllerAnimated方法.因为不是控制器,所以无法使用self.navigationController.这时候便可以采用响应者链条,去遍历响应者取出navigation对象">
   
     <link rel="alternative" href="/atom.xml" title="SayDy&#39;s Blog" type="application/atom+xml">
   
@@ -241,7 +241,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>响应者链条有很多妙用.比如自定义一个控件时.需要执行<strong>navigation</strong>的<strong>popViewControllerAnimated</strong>方法.因为不是控制器,所以无法使用<strong>self.navigationController</strong>.<br>这时候可以采用响应者链条,去遍历响应者取出navigation<br><a id="more"></a></p>
+        <p>响应者链条有很多妙用.比如自定义一个控件时.需要执行<strong>navigation</strong>的<strong>popViewControllerAnimated</strong>方法.因为不是控制器,所以无法使用<strong>self.navigationController</strong>.<br>这时候便可以采用响应者链条,去遍历响应者取出<strong>navigation</strong>对象<br><a id="more"></a></p>
 <h3 id="u5B9E_u73B0"><a href="#u5B9E_u73B0" class="headerlink" title="实现"></a>实现</h3><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">UINavigationController</span> *)getNavigation &#123;</span><br><span class="line">    <span class="comment">// 取出下一个响应者</span></span><br><span class="line">    <span class="keyword">id</span> obj = [<span class="keyword">self</span> nextResponder];</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        <span class="comment">// 判断是否为UINavigationController类型</span></span><br><span class="line">        <span class="keyword">if</span> ([obj isKindOfClass:[<span class="built_in">UINavigationController</span> class]]) &#123;</span><br><span class="line">            <span class="comment">// 是返回这个对象</span></span><br><span class="line">            <span class="keyword">return</span> obj;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 否则继续使用本次取到的对象,取下一个响应者</span></span><br><span class="line">        obj = [obj nextResponder];</span><br><span class="line">        <span class="comment">// 如果下一个响应者存在,继续循环</span></span><br><span class="line">    &#125; <span class="keyword">while</span> (obj);</span><br><span class="line">    <span class="comment">// 没有找到,返回空</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>为了方便使用可以把他作为<strong>UIView</strong>的<strong>Category</strong>方便调用</p>
 
@@ -255,7 +255,7 @@
         <p><span>本文标题:</span><a href="/2016/03/02/响应者链条调用navigation/">响应者链条调用navigation</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 SayDy 的个人博客">SayDy</a></p>
         <p><span>发布时间:</span>2016年03月02日 - 21时07分</p>
-        <p><span>最后更新:</span>2016年03月02日 - 22时14分</p>
+        <p><span>最后更新:</span>2016年03月02日 - 22时17分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/03/02/响应者链条调用navigation/" title="响应者链条调用navigation">http://saydy.top/2016/03/02/响应者链条调用navigation/</a>
             <span class="copy-path" data-clipboard-text="原文: http://saydy.top/2016/03/02/响应者链条调用navigation/　　作者: SayDy" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
